@@ -1,25 +1,14 @@
-class User {
+import { Folders } from "./folder";
+import { Username } from "./username";
+
+export class User {
   private _userId: string;
-  private _email: string;
-  private _password: string;
   private _username: Username;
   private _folders: Folders;
-  constructor(
-    userId: string,
-    email: string,
-    password: string,
-    username: Username,
-    folders: Folders
-  ) {
-    if (this.emailIsValid(email)) {
-      this._userId = userId;
-      this._email = email;
-      this._password = password;
-      this._username = username;
-      this._folders = folders;
-    } else {
-      throw new Error("Email is not valid");
-    }
+  constructor(userId: string, username: Username, folders: Folders) {
+    this._userId = userId;
+    this._username = username;
+    this._folders = folders;
   }
 
   get userId(): string {

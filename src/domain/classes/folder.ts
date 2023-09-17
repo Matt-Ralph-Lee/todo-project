@@ -1,4 +1,4 @@
-class Folders {
+export class Folders {
   private _folders: string[];
 
   constructor(folders: string[]) {
@@ -25,5 +25,9 @@ class Folders {
     if (this._folders.includes(targetFolder)) {
       this._folders = this._folders.filter((s) => s !== targetFolder);
     }
+  }
+
+  toList(): string[] {
+    return this._folders;
   }
 }

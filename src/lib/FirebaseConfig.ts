@@ -5,7 +5,7 @@ import {
   FirebaseOptions,
   FirebaseApp,
   initializeApp,
-} from "firebase/app";
+} from "@firebase/app";
 
 export const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
