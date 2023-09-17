@@ -1,4 +1,4 @@
-class TaskStatus {
+export class TaskStatus {
   private _taskNum: number;
   private _doneTaskNum: number;
   constructor(taskNum: number, doneTaskNum: number) {

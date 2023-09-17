@@ -1,4 +1,6 @@
-class Tasks {
+import { Task } from "./task";
+
+export class Tasks {
   private _tasks: Task[];
   private _folder: string;
 

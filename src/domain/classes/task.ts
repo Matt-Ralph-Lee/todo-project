@@ -1,4 +1,4 @@
-class Task {
+export class Task {
   private _title: string;
   private _detail: string;
   private _isDone: boolean;

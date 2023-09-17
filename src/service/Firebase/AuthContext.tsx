@@ -8,6 +8,8 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut,
+  fetchSignInMethodsForEmail,
+  EmailAuthProvider,
 } from "firebase/auth";
 import {
   ReactNode,
@@ -17,6 +19,7 @@ import {
   useState,
 } from "react";
 import { getFirebaseApp } from "@/lib/FirebaseConfig";
+import { FirestoreService } from "./Firestore";
 
 const AuthContext = createContext<AuthContextState>({
   currentUser: null,
@@ -28,6 +31,8 @@ const app = getFirebaseApp();
 const auth = getAuth(app);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+  const firestoreService = new FirestoreService();
+
   const [user, setUser] = useState<FirebaseUser | null>(null);
 
   const googleSignIn = () => {
@@ -39,8 +44,15 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      if (currentUser && currentUser.email) {
+        let _username = "Username";
+        if (currentUser.displayName) {
+          _username = currentUser.displayName;
+        }
+        firestoreService.addNewUser(currentUser.uid, _username, ["All"]);
+      }
     });
     return () => unsubscribe();
   }, [user]);

@@ -1,4 +1,4 @@
-class Username {
+export class Username {
   private _username: string;
 
   constructor(username: string) {
@@ -19,6 +19,10 @@ class Username {
     } else {
       throw new Error("Username should be 3 to 20 letters");
     }
+  }
+
+  toString(): string {
+    return this._username;
   }
 
   private isValid(username: string): boolean {
