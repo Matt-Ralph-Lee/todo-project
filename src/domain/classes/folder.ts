@@ -1,29 +1,29 @@
-class Folder {
-  private _folder: string[];
+class Folders {
+  private _folders: string[];
 
-  constructor(folder: string[]) {
-    if (folder.length >= 1 && folder.includes("All")) {
-      this._folder = folder;
+  constructor(folders: string[]) {
+    if (folders.length >= 1 && folders.includes("All")) {
+      this._folders = folders;
     } else {
       throw new Error("folder must contain All folder");
     }
   }
 
-  get folder(): string[] {
-    return this._folder;
+  get folders(): string[] {
+    return this._folders;
   }
 
   add(newFolder: string) {
-    if (this._folder.includes(newFolder)) {
+    if (this._folders.includes(newFolder)) {
       throw new Error("folder name has to be unique...");
     } else {
-      this._folder.push(newFolder);
+      this._folders.push(newFolder);
     }
   }
 
   delete(targetFolder: string) {
-    if (this._folder.includes(targetFolder)) {
-      this._folder = this._folder.filter((s) => s !== targetFolder);
+    if (this._folders.includes(targetFolder)) {
+      this._folders = this._folders.filter((s) => s !== targetFolder);
     }
   }
 }
