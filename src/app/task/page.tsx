@@ -1,13 +1,26 @@
 "use client";
-import { UserAuth } from "@/service/Firebase/AuthContext";
+import AddTask from "@/components/AddTask";
+import Sidebar from "@/components/Sidebar";
+import TaskStatus from "@/components/TaskStatus";
+import Tasks from "@/components/Tasks";
 import React from "react";
 
 const TaskPage = () => {
   return (
-    <div className="p-4">
-      <h1>Task Page</h1>
-      <p>You must be logged in</p>
+    <div>
+      <Sidebar />
+      <div className="px-20 flex justify-between pt-20">
+        <div className="w-40 h-20"></div>
+        <div className="w-1/2">
+          <AddTask />
+          <Tasks />
+        </div>
+        <div className="w-40 h-20">
+          <TaskStatus />
+        </div>
+      </div>
     </div>
+
     // the code for coming on this page without logged in.
   );
 };
