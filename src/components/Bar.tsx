@@ -1,11 +1,14 @@
 import React from "react";
 
-const Bar = () => {
+const Bar = ({ progress }: { progress: number | null }) => {
   return (
-    <div className="h-full">
-      <div className="w-4 h-full bg-gray-100 rotate-180">
-        <div className="h-4 bg-gray-500"></div>
-      </div>
+    <div className="w-4 h-16 bg-gray-100 rotate-180">
+      {progress === null ? null : (
+        <div
+          style={{ height: `${progress * 100}%` }}
+          className={"bg-gray-500"}
+        ></div>
+      )}
     </div>
   );
 };

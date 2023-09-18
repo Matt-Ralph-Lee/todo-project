@@ -8,8 +8,6 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut,
-  fetchSignInMethodsForEmail,
-  EmailAuthProvider,
 } from "firebase/auth";
 import {
   ReactNode,
@@ -20,6 +18,7 @@ import {
 } from "react";
 import { getFirebaseApp } from "@/lib/FirebaseConfig";
 import { FirestoreService } from "./Firestore";
+import { User } from "@/domain/classes/user";
 
 const AuthContext = createContext<AuthContextState>({
   currentUser: null,
@@ -72,4 +71,13 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
 export const UserAuth = () => {
   return useContext(AuthContext);
+};
+
+export const useUserAuth = () => {
+  const { currentUser } = useContext(AuthContext);
+  if (currentUser !== null) {
+    return currentUser;
+  } else {
+    throw new Error("user is null");
+  }
 };
