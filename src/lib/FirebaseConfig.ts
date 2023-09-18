@@ -6,6 +6,7 @@ import {
   FirebaseApp,
   initializeApp,
 } from "@firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 export const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -24,3 +25,5 @@ const app = initializeApp(firebaseConfig);
 export const getFirebaseApp = (): FirebaseApp => {
   return !getApps().length ? app : getApp();
 };
+
+export const db = getFirestore(app);
