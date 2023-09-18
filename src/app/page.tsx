@@ -1,17 +1,17 @@
 "use client";
 import Image from "next/image";
-import { useContext } from "react";
 
-// export default function Wrapper() {
-//   const user = useAuthContext();
-//   console.log(user);
-//   return <main className="p-4">{user ? <Home /> : <SignIn />}</main>;
-// }
-
-export default function Wrapper() {
+export default function Home() {
   return (
-    <main className="p-4">
-      <h1>Home Page</h1>
+    <main>
+      <div className="flex items-center h-screen p-8">
+        <div>
+          <h1 className="text-9xl">To Do App</h1>
+          <h2 className="mx-48 my-12 text-4xl">
+            Organize your task and clean up
+          </h2>
+        </div>
+      </div>
     </main>
   );
 }
