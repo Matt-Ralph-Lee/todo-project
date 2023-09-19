@@ -23,34 +23,62 @@ const Sidebar = ({
     }
   };
   return (
-    <div className="absolute h-screen pt-20 w-72">
-      {folders.map((value) => {
+    <div className="absolute h-screen pt-20 w-72 text-f2 tracking-widest">
+      {folders.map((value, i) => {
         return value === selectedFolder ? (
-          <button
-            onClick={() => setSelectedFolder(value)}
-            className="w-full text-blue-700"
-          >
-            {value}
-          </button>
+          <div className="w-full flex flex-col items-center mb-4">
+            <button
+              className="w-3/5 py-2"
+              key={i}
+              onClick={() => setSelectedFolder(value)}
+            >
+              {value}
+            </button>
+            <div
+              style={{
+                background:
+                  "radial-gradient(circle at center, #F2F2F2 0%, rgba(242, 242, 242, 0) 100%)",
+              }}
+              className="w-3/5 h-px"
+            ></div>
+          </div>
         ) : (
-          <button onClick={() => setSelectedFolder(value)} className="w-full">
-            {value}
-          </button>
+          <div className="w-full flex flex-col items-center mb-2 opacity-30">
+            <button
+              className="w-3/5 py-2 text-opacity-10"
+              key={i}
+              onClick={() => setSelectedFolder(value)}
+            >
+              {value}
+            </button>
+            <div
+              style={{
+                background:
+                  "radial-gradient(circle at center, #F2F2F2 0%, rgba(242, 242, 242, 0) 100%)",
+              }}
+              className="w-3/5 h-px"
+            ></div>
+          </div>
         );
       })}
-      <div className="bg-gray-200 px-4">
-        <div className="w-full">Add Folder</div>
-        <input
-          value={newFolder}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setNewFolder(e.target.value);
-          }}
-          className="border w-full"
-        />
-        <div className="w-full flex justify-center">
-          <button onClick={handleAddFolder} className="bg-gray-400">
-            Add +
-          </button>
+      <div className="w-full flex justify-center mt-20">
+        <div className="w-4/5 bg-[#1d1d1d] rounded-xl px-4 py-2 text-11">
+          <input
+            type="text"
+            value={newFolder}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setNewFolder(e.target.value);
+            }}
+            className="w-full rounded-full my-2 py-2 focus:border-opacity-1 border-11 border text-center"
+          />
+          <div className="w-full flex justify-center">
+            <button
+              onClick={handleAddFolder}
+              className="w-full border border-f2 border-opacity-30 rounded-full my-2 py-2 text-f2"
+            >
+              Add Folder
+            </button>
+          </div>
         </div>
       </div>
     </div>
