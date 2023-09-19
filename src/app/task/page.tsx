@@ -9,15 +9,23 @@ import {
   DocumentData,
   collection,
   doc,
-  getDoc,
   onSnapshot,
   query,
   where,
 } from "firebase/firestore";
 import { db } from "@/lib/FirebaseConfig";
+import { redirect } from "next/navigation";
 
 const TaskPage = () => {
-  const user = useUserAuth();
+  const handleRedirect = () => {
+    try {
+      return useUserAuth();
+    } catch (e) {
+      console.log(e);
+      redirect("/");
+    }
+  };
+  const user = handleRedirect();
   const [folders, setFolders] = useState<string[]>(["All"]);
   const [selectedFolder, setSelectedFolder] = useState("All");
 
