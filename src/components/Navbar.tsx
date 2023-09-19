@@ -25,14 +25,20 @@ const Navbar = () => {
     <div className="h-20 w-full border-b-2 flex items-center justify-between p-2 absolute">
       <ul className="flex">
         <li className="p-2 cursor-pointer">
-          <Link href="/">Home</Link>
+          <Link href="/" className="text-white">
+            Home
+          </Link>
         </li>
         <li className="p-2 cursor-pointer">
-          <Link href="/demo">Demo</Link>
+          <Link href="/demo" className="text-white">
+            Demo
+          </Link>
         </li>
         {currentUser ? (
           <li className="p-2 cursor-pointer">
-            <Link href="/task">Your Tasks</Link>
+            <Link href="/task" className="text-white">
+              Your Tasks
+            </Link>
           </li>
         ) : null}
       </ul>
