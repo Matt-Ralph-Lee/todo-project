@@ -14,7 +14,7 @@ export default function Home() {
             }}
             className="font-bold text-xl bg-clip-text text-transparent mt-12"
           >
-            Organize your task and clean up
+            Organize, Perform, and Clean Up.
           </div>
         </div>
       </div>

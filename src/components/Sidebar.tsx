@@ -23,12 +23,12 @@ const Sidebar = ({
     }
   };
   return (
-    <div className="absolute h-screen pt-20 w-72 text-f2 tracking-widest">
+    <div className="absolute h-screen pt-40 w-72">
       {folders.map((value, i) => {
         return value === selectedFolder ? (
           <div className="w-full flex flex-col items-center mb-4">
             <button
-              className="w-3/5 py-2"
+              className="w-3/5 py-2 text-f2 tracking-widest"
               key={i}
               onClick={() => setSelectedFolder(value)}
             >
@@ -45,7 +45,7 @@ const Sidebar = ({
         ) : (
           <div className="w-full flex flex-col items-center mb-2 opacity-30">
             <button
-              className="w-3/5 py-2 text-opacity-10"
+              className="w-3/5 py-2 text-f2 tracking-widest"
               key={i}
               onClick={() => setSelectedFolder(value)}
             >
@@ -61,7 +61,7 @@ const Sidebar = ({
           </div>
         );
       })}
-      <div className="w-full flex justify-center mt-20">
+      <div className="w-full flex justify-center mt-32">
         <div className="w-4/5 bg-[#1d1d1d] rounded-xl px-4 py-2 text-11">
           <input
             type="text"
@@ -74,7 +74,7 @@ const Sidebar = ({
           <div className="w-full flex justify-center">
             <button
               onClick={handleAddFolder}
-              className="w-full border border-f2 border-opacity-30 rounded-full my-2 py-2 text-f2"
+              className="w-full border border-f2 border-opacity-30 rounded-full my-2 py-2 text-f2 hover:bg-f2 hover:bg-opacity-10"
             >
               Add Folder
             </button>

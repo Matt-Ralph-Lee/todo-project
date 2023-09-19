@@ -75,14 +75,30 @@ const TaskPage = () => {
         folders={folders}
         setSelectedFolder={setSelectedFolder}
       />
-      <div className="px-20 flex justify-between pt-20">
-        <div className="w-40 h-20"></div>
+      <div className="px-8 flex justify-between pt-20">
+        <div className="w-64 h-20"></div>
         <div className="w-1/2">
-          {selectedFolder}
+          <div className="text-2xl text-f2 tracking-widest mb-2">
+            {selectedFolder}
+          </div>
+          <div
+            style={{
+              background:
+                "radial-gradient(circle at center, #F2F2F2 0%, rgba(242, 242, 242, 0.3) 100%)",
+            }}
+            className="w-full h-px my-2"
+          ></div>
           <AddTask selectedFolder={selectedFolder} />
+          <div
+            style={{
+              background:
+                "radial-gradient(circle at center, #F2F2F2 0%, rgba(242, 242, 242, 0.3) 100%)",
+            }}
+            className="w-full h-px my-2"
+          ></div>
           <Tasks tasks={tasks} selectedFolder={selectedFolder} />
         </div>
-        <div className="w-40 h-20">
+        <div className="w-64 h-20">
           <TaskStatus taskStatus={taskStatus} />
         </div>
       </div>
