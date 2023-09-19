@@ -18,20 +18,31 @@ const TaskStatus = ({
   };
   const progress = calculateProgress();
   return (
-    <div className="flex items-center px-8">
-      <div>
+    <div className="h-72 w-56 flex items-center mt-10 px-8 py-4 border border-f2 border-opacity-50 rounded-3xl text-f2 font-bold">
+      <div className="h-full flex items-center">
         <Bar progress={progress} />
       </div>
-      <div>
+      <div className="w-4/5 h-4/5 flex flex-col justify-between">
         {progress === null ? (
-          <div className="w-4/5"> --%</div>
+          <div className="flex items-end">
+            <div className="w-1/2 text-4xl text-right">--</div>
+            <div className="ml-4 text-base">%</div>
+          </div>
         ) : (
-          <div className="w-4/5">{progress * 100}%</div>
+          <div className="flex items-end mt-8">
+            <div className="w-1/2 text-4xl text-right">{progress * 100}</div>
+            <div className="ml-4 text-base">%</div>
+          </div>
         )}
-
-        <div className="flex">
-          <div>{taskStatus.done} Done</div>
-          <div>{taskStatus.yet} Task</div>
+        <div>
+          <div className="flex items-end mt-4">
+            <div className="w-1/2 text-3xl text-right">{taskStatus.done}</div>
+            <div className="ml-4 text-base">Done</div>
+          </div>
+          <div className="flex items-end mt-4">
+            <div className="w-1/2 text-3xl text-right">{taskStatus.yet}</div>
+            <div className="ml-4 text-base">Task</div>
+          </div>
         </div>
       </div>
     </div>

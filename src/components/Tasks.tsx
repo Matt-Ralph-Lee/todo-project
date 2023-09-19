@@ -10,8 +10,7 @@ const Tasks = ({
   selectedFolder: string;
 }) => {
   return (
-    <div className="my-4 px-4 py-2 border">
-      <div>Tasks</div>
+    <div className="px-4 py-2">
       {tasks.map((task) => (
         <Task key={task.id} task={task} />
       ))}

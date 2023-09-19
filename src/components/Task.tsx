@@ -2,6 +2,8 @@ import { db } from "@/lib/FirebaseConfig";
 import { useUserAuth } from "@/service/Firebase/AuthContext";
 import { DocumentData, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { More } from "../../public/more";
 
 const Task = ({ task }: { task: DocumentData }) => {
   const user = useUserAuth();
@@ -47,20 +49,20 @@ const Task = ({ task }: { task: DocumentData }) => {
     await deleteDoc(doc(db, `users/${user.uid}/tasks`, `${task.id}`));
   };
   return (
-    <div className="bg-gray-100">
+    <div className="border border-f2 mb-2 border-opacity-50 rounded-2xl px-4 py-2 text-f2">
       <div className="flex justify-between  px-4 my-2">
         <div className="flex items-center">
           <button className="w-8">
-            <div className="w-6 h-6 border rounded-full flex justify-center items-center">
+            <div className="w-8 h-8 border rounded-full flex justify-center items-center">
               {currentTaskState ? (
                 <div
                   onClick={handleTaskStateChange}
-                  className="w-4 h-4 bg-blue-700 rounded-full"
+                  className="w-6 h-6 bg-[#592ABC] rounded-full"
                 ></div>
               ) : (
                 <div
                   onClick={handleTaskStateChange}
-                  className="w-4 h-4 bg-white rounded-full"
+                  className="w-6 h-6 bg-white rounded-full"
                 ></div>
               )}
             </div>
@@ -75,42 +77,48 @@ const Task = ({ task }: { task: DocumentData }) => {
               className="border"
             />
           ) : (
-            <div>{currentTaskTitle}</div>
+            <div className="mx-4">{currentTaskTitle}</div>
           )}
         </div>
-        <div>
-          <button
-            onClick={handleIsEditing}
-            className="w-16 m-2 border bg-gray-300"
-          >
-            {isEditing ? "save" : "edit"}
-          </button>
+        <div className="flex items-center">
+          {isEditing ? (
+            <button
+              onClick={handleIsEditing}
+              className="w-16 m-2 px-4 py-1 border border-f2 border-opacity-30 rounded-full text-xs text-[#2CCA58] hover:bg-f2 hover:bg-opacity-10"
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              onClick={handleIsEditing}
+              className="m-2 px-4 py-1 border border-f2 border-opacity-30 rounded-full text-xs text-[#552CCA] hover:bg-f2 hover:bg-opacity-10"
+            >
+              Edit
+            </button>
+          )}
+
           <button
             onClick={handleDelete}
-            className="w-16 m-2 border bg-gray-300"
+            className="m-2 px-4 py-1 border border-f2 border-opacity-30 rounded-full text-xs text-[#E03741] hover:bg-f2 hover:bg-opacity-10"
           >
-            delete
+            Delete
           </button>
           {taskOpen ? (
             <button
               onClick={handleTaskOpen}
-              className="w-8 bg-gray-400 rounded-full"
+              className="w-8 rotate-180 -translate-y-1 rounded-full"
             >
-              /\
+              <More />
             </button>
           ) : (
-            <button
-              onClick={handleTaskOpen}
-              className="w-8 bg-gray-400 rounded-full"
-            >
-              \/
+            <button onClick={handleTaskOpen} className="w-8 rounded-full">
+              <More />
             </button>
           )}
         </div>
       </div>
       {taskOpen ? (
-        <div className="flex ml-12">
-          <div>Detail :</div>
+        <div className="flex m-16 my-2">
           {isEditing ? (
             <input
               value={currentTaskDetail}
@@ -119,7 +127,7 @@ const Task = ({ task }: { task: DocumentData }) => {
               }}
             />
           ) : (
-            <div className="ml-8">{currentTaskDetail}</div>
+            <div className="text-sm">{currentTaskDetail}</div>
           )}
         </div>
       ) : null}
