@@ -16,9 +16,12 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getFirebaseApp } from "@/lib/FirebaseConfig";
+import { db, getFirebaseApp } from "@/lib/FirebaseConfig";
 import { FirestoreService } from "./Firestore";
 import { User } from "@/domain/classes/user";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { Username } from "@/domain/classes/username";
+import { Folders } from "@/domain/classes/folder";
 
 const AuthContext = createContext<AuthContextState>({
   currentUser: null,
@@ -30,7 +33,7 @@ const app = getFirebaseApp();
 const auth = getAuth(app);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const firestoreService = new FirestoreService();
+  // const firestoreService = new FirestoreService();
 
   const [user, setUser] = useState<FirebaseUser | null>(null);
 
@@ -50,7 +53,25 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         if (currentUser.displayName) {
           _username = currentUser.displayName;
         }
-        firestoreService.addNewUser(currentUser.uid, _username, ["All"]);
+        const docSnap = await getDoc(doc(db, "users", currentUser.uid));
+        if (docSnap.exists()) return;
+
+        const verifiedUsername = new Username(_username);
+        const verifiedFolders = new Folders(["All"]);
+        const user = new User(
+          currentUser.uid,
+          verifiedUsername,
+          verifiedFolders
+        );
+        try {
+          const docRef = await setDoc(doc(db, "users", user.userId), {
+            userId: user.userId,
+            username: user.username.toString(),
+            folders: user.folders.toList(),
+          });
+        } catch (e) {
+          console.log(e);
+        }
       }
     });
     return () => unsubscribe();
