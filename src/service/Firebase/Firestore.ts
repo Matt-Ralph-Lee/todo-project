@@ -1,4 +1,4 @@
-import { Folders } from "@/domain/classes/folder";
+import { Folders } from "@/domain/classes/folders";
 import { User } from "@/domain/classes/user";
 import { Username } from "@/domain/classes/username";
 import { db, getFirebaseApp } from "@/lib/FirebaseConfig";

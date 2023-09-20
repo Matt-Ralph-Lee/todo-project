@@ -20,7 +20,7 @@ import { db, getFirebaseApp } from "@/lib/FirebaseConfig";
 import { User } from "@/domain/classes/user";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { Username } from "@/domain/classes/username";
-import { Folders } from "@/domain/classes/folder";
+import { Folders } from "@/domain/classes/folders";
 
 const AuthContext = createContext<AuthContextState>({
   currentUser: null,

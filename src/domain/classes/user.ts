@@ -1,4 +1,4 @@
-import { Folders } from "./folder";
+import { Folders } from "./folders";
 import { Username } from "./username";
 
 export class User {
