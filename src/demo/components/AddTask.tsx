@@ -27,8 +27,16 @@ const AddTask = ({
 
       const newTaskClass = new Task(newTask.title, newTask.detail, false);
 
-      tasks.push(newTaskClass);
-      setTasks([...tasks]);
+      // tasks.push(newTaskClass);
+      // setTasks([...tasks]);
+
+      tasksData.forEach((t) => {
+        if (t.folder === selectedFolder) {
+          t.add(newTaskClass);
+          setTasks([...tasks, newTaskClass]);
+        }
+      });
+      setTasksData(tasksData);
 
       setNewTask({
         title: "",
