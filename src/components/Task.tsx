@@ -1,12 +1,12 @@
 import { db } from "@/lib/FirebaseConfig";
-import { useUserAuth } from "@/service/Firebase/AuthContext";
+import { UseUserAuth } from "@/service/Firebase/AuthContext";
 import { DocumentData, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { More } from "../../public/more";
 
 const Task = ({ task }: { task: DocumentData }) => {
-  const user = useUserAuth();
+  const user = UseUserAuth();
   const ref = useRef<HTMLInputElement>(null);
 
   const [taskOpen, setTaskOpen] = useState(false);
