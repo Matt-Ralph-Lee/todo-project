@@ -24,9 +24,12 @@ export class Tasks {
     }
   }
 
-  delete(targetTask: Task) {
+  delete(targetTask: Task): boolean {
     if (this._tasks.includes(targetTask)) {
       this._tasks = this._tasks.filter((s) => s !== targetTask);
+      return true;
+    } else {
+      return false;
     }
   }
 }

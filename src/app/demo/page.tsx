@@ -93,6 +93,7 @@ const Demo = () => {
             setTaskStatus={setTaskStatus}
             tasksData={tasksData}
             setTasksData={setTasksData}
+            selectedFolder={selectedFolder}
           />
         </div>
         <div className="w-64 h-20">

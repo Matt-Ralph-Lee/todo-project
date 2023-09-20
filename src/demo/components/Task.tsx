@@ -10,6 +10,7 @@ const Task = ({
   setTasks,
   tasksData,
   setTasksData,
+  selectedFolder,
 }: {
   task: TaskClass;
   taskStatus: { done: number; yet: number };
@@ -22,6 +23,7 @@ const Task = ({
   setTasks: React.Dispatch<React.SetStateAction<TaskClass[]>>;
   tasksData: Tasks[];
   setTasksData: React.Dispatch<React.SetStateAction<Tasks[]>>;
+  selectedFolder: string;
 }) => {
   const ref = useRef<HTMLInputElement>(null);
 
@@ -31,9 +33,6 @@ const Task = ({
     title: task.title,
     detail: task.title,
   });
-  console.log(task);
-  console.log(editedTask);
-  console.log("==========================");
 
   useEffect(() => {
     if (isEditing) {
@@ -85,10 +84,22 @@ const Task = ({
     setIsEditing(!isEditing);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     tasksData.forEach((d) => {
-      d.delete(task);
-      setTasks(d.tasks);
+      const result = d.delete(task);
+      console.log(result);
+      if (result) {
+        if (selectedFolder !== "All") {
+          setTasks(d.tasks);
+        } else {
+          let newTasks: TaskClass[] = [];
+          tasksData.forEach((d) => {
+            newTasks.push(...d.tasks);
+          });
+          console.log(newTasks);
+          setTasks(newTasks);
+        }
+      }
     });
     setTasksData(tasksData);
   };

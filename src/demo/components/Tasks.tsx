@@ -10,6 +10,7 @@ const Tasks = ({
   setTaskStatus,
   tasksData,
   setTasksData,
+  selectedFolder,
 }: {
   tasks: TaskClass[];
   setTasks: React.Dispatch<React.SetStateAction<TaskClass[]>>;
@@ -22,6 +23,7 @@ const Tasks = ({
   >;
   tasksData: TasksClass[];
   setTasksData: React.Dispatch<React.SetStateAction<TasksClass[]>>;
+  selectedFolder: string;
 }) => {
   return (
     <div className="px-4 py-2">
@@ -34,6 +36,7 @@ const Tasks = ({
           setTasks={setTasks}
           tasksData={tasksData}
           setTasksData={setTasksData}
+          selectedFolder={selectedFolder}
         />
       ))}
     </div>
