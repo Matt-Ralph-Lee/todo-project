@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { More } from "../../../public/more";
 import { Task as TaskClass } from "@/domain/classes/task";
 import { Tasks } from "@/domain/classes/tasks";
@@ -8,7 +7,7 @@ const Task = ({
   task,
   taskStatus,
   setTaskStatus,
-  tasks,
+  setTasks,
   tasksData,
   setTasksData,
 }: {
@@ -20,7 +19,7 @@ const Task = ({
       yet: number;
     }>
   >;
-  tasks: TaskClass[];
+  setTasks: React.Dispatch<React.SetStateAction<TaskClass[]>>;
   tasksData: Tasks[];
   setTasksData: React.Dispatch<React.SetStateAction<Tasks[]>>;
 }) => {
@@ -32,6 +31,9 @@ const Task = ({
     title: task.title,
     detail: task.title,
   });
+  console.log(task);
+  console.log(editedTask);
+  console.log("==========================");
 
   useEffect(() => {
     if (isEditing) {
@@ -39,9 +41,9 @@ const Task = ({
     }
   }, [isEditing]);
 
-  // const updateTasks = (newTask: TaskClass) => {
-  //   tasks.forEach((t) => {});
-  // };
+  useEffect(() => {
+    setEditedTask({ title: task.title, detail: task.detail });
+  }, [task]);
 
   const handleTaskOpen = () => {
     setTaskOpen(!taskOpen);
@@ -86,6 +88,7 @@ const Task = ({
   const handleDelete = async () => {
     tasksData.forEach((d) => {
       d.delete(task);
+      setTasks(d.tasks);
     });
     setTasksData(tasksData);
   };

@@ -49,9 +49,7 @@ const Demo = () => {
     taskData = getSelectedTasks(tasksData, selectedFolder);
     setTaskStatus(calculateTaskStatus(taskData));
     setTasks(taskData);
-  }, [selectedFolder, tasks]);
-
-  useEffect(() => {}, [taskStatus]);
+  }, [selectedFolder]);
 
   return (
     <div>

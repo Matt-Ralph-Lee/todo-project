@@ -31,7 +31,7 @@ const Tasks = ({
           task={task}
           taskStatus={taskStatus}
           setTaskStatus={setTaskStatus}
-          tasks={tasks}
+          setTasks={setTasks}
           tasksData={tasksData}
           setTasksData={setTasksData}
         />
