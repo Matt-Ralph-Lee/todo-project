@@ -65,7 +65,7 @@ const Demo = () => {
         tasksData={tasksData}
         setTasksData={setTasksData}
       />
-      <div className="px-8 flex justify-between pt-20 h-screen">
+      <div className="px-8 flex justify-between pt-20">
         <div className="w-64 h-20"></div>
         <div className="w-1/2">
           <div className="text-2xl text-f2 tracking-widest mb-2">
