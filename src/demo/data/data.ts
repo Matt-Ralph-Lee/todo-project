@@ -4,7 +4,7 @@ import { Tasks } from "@/domain/classes/tasks";
 import { User } from "@/domain/classes/user";
 import { Username } from "@/domain/classes/username";
 
-export const _userData = new User(
+export const userData = new User(
   "hogeId",
   new Username("hoge"),
   new Folders(["All", "Home Improvement", "Fitness and Health"])

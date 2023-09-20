@@ -33,7 +33,7 @@ const AddTask = ({
       tasksData.forEach((t) => {
         if (t.folder === selectedFolder) {
           t.add(newTaskClass);
-          setTasks([...tasks, newTaskClass]);
+          setTasks([...t.tasks]);
         }
       });
       setTasksData(tasksData);

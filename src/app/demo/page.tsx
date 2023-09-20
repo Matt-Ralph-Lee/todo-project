@@ -4,7 +4,7 @@ import Sidebar from "@/demo/components/Sidebar";
 import TaskStatus from "@/demo/components/TaskStatus";
 import Tasks from "@/demo/components/Tasks";
 import React, { useEffect, useState } from "react";
-import { _tasksData, _userData } from "@/demo/data/data";
+import { _tasksData, userData } from "@/demo/data/data";
 import { Folders } from "@/domain/classes/folders";
 import { Task } from "@/domain/classes/task";
 import { Tasks as TasksClass } from "@/domain/classes/tasks";
@@ -34,7 +34,7 @@ const getSelectedTasks = (tasksList: TasksClass[], selectedFolder: string) => {
 };
 
 const Demo = () => {
-  const [userData, setUserData] = useState(_userData);
+  // const [userData, setUserData] = useState(_userData);
   const [tasksData, setTasksData] = useState(_tasksData);
 
   const [folders, setFolders] = useState<Folders>(userData.folders);
@@ -58,6 +58,8 @@ const Demo = () => {
         setFolders={setFolders}
         selectedFolder={selectedFolder}
         setSelectedFolder={setSelectedFolder}
+        tasksData={tasksData}
+        setTasksData={setTasksData}
       />
       <div className="px-8 flex justify-between pt-20">
         <div className="w-64 h-20"></div>
