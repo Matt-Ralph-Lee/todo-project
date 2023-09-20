@@ -56,7 +56,7 @@ const Demo = () => {
   }, [tasks]);
 
   return (
-    <div className="container">
+    <div>
       <Sidebar
         folders={folders}
         setFolders={setFolders}
