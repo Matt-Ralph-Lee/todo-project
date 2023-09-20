@@ -51,6 +51,10 @@ const Demo = () => {
     setTasks(taskData);
   }, [selectedFolder]);
 
+  useEffect(() => {
+    setTaskStatus(calculateTaskStatus(taskData));
+  }, [tasks]);
+
   return (
     <div>
       <Sidebar
