@@ -1,5 +1,5 @@
 import { db } from "@/lib/FirebaseConfig";
-import { useUserAuth } from "@/service/Firebase/AuthContext";
+import { UseUserAuth } from "@/service/Firebase/AuthContext";
 import { addDoc, collection } from "firebase/firestore";
 import React, { FormEvent, useState } from "react";
 
@@ -10,7 +10,7 @@ const AddTask = ({ selectedFolder }: { selectedFolder: string }) => {
     isDone: false,
   });
 
-  const user = useUserAuth();
+  const user = UseUserAuth();
 
   const handleAddTask = async (e: FormEvent) => {
     e.preventDefault();
