@@ -1,4 +1,5 @@
 import { Folders } from "@/domain/classes/folders";
+import { Tasks } from "@/domain/classes/tasks";
 import React, { useState } from "react";
 
 const Sidebar = ({
@@ -6,17 +7,22 @@ const Sidebar = ({
   setFolders,
   selectedFolder,
   setSelectedFolder,
+  tasksData,
+  setTasksData,
 }: {
   folders: Folders;
   setFolders: React.Dispatch<React.SetStateAction<Folders>>;
   selectedFolder: string;
   setSelectedFolder: React.Dispatch<React.SetStateAction<string>>;
+  tasksData: Tasks[];
+  setTasksData: React.Dispatch<React.SetStateAction<Tasks[]>>;
 }) => {
   const [newFolder, setNewFolder] = useState("");
   const handleAddFolder = async () => {
     if (newFolder !== "") {
       folders.add(newFolder);
       setFolders(folders);
+      setTasksData([...tasksData, new Tasks([], newFolder)]);
       setNewFolder("");
     }
   };
