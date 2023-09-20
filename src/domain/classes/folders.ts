@@ -30,4 +30,14 @@ export class Folders {
   toList(): string[] {
     return this._folders;
   }
+
+  map<U>(callback: (value: string, index: number, array: string[]) => U): U[] {
+    const result: U[] = [];
+    for (let i = 0; i < this._folders.length; i++) {
+      const item = this._folders[i];
+      const mappedItem = callback(item, i, this._folders);
+      result.push(mappedItem);
+    }
+    return result;
+  }
 }

@@ -25,7 +25,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="h-20 w-full flex items-center justify-between p-2 absolute text-f2 tracking-widest">
+    <div className="h-20 w-full flex items-center justify-between p-2 absolute text-f2 tracking-widest z-50">
       <ul className="flex px-2">
         <li className="p-2 cursor-pointer mx-4">
           <Link href="/">Home</Link>

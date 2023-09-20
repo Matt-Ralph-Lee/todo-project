@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Bar from "./Bar";
-import { DocumentData } from "firebase/firestore";
 
 const TaskStatus = ({
   taskStatus,
@@ -13,13 +12,13 @@ const TaskStatus = ({
     } else if (taskStatus.done === 0) {
       return 0;
     } else {
-      return parseFloat((taskStatus.done / taskStatus.yet).toFixed(1));
+      return taskStatus.done / taskStatus.yet;
     }
   };
   const progress = calculateProgress();
   return (
-    <div className="h-72 w-56 flex items-center mt-10 px-8 py-4 border border-f2 border-opacity-50 rounded-3xl text-f2 font-bold">
-      <div className="h-full flex items-center">
+    <div className="h-72 w-56 flex items-center mt-10 px-4 py-4 border border-f2 border-opacity-50 rounded-3xl text-f2 font-bold">
+      <div className="h-full px-2 flex items-center">
         <Bar progress={progress} />
       </div>
       <div className="w-4/5 h-4/5 flex flex-col justify-between">
@@ -30,7 +29,11 @@ const TaskStatus = ({
           </div>
         ) : (
           <div className="flex items-end mt-8">
-            <div className="w-1/2 text-4xl text-right">{progress * 100}</div>
+            <div className="w-1/2 text-4xl text-right">
+              {Number.isInteger(progress * 100)
+                ? progress * 100
+                : (progress * 100).toFixed(1)}
+            </div>
             <div className="ml-4 text-base">%</div>
           </div>
         )}
@@ -50,6 +53,3 @@ const TaskStatus = ({
 };
 
 export default TaskStatus;
-function setTasks(taskArr: DocumentData[]) {
-  throw new Error("Function not implemented.");
-}
