@@ -27,7 +27,7 @@ const Sidebar = ({
     }
   };
   return (
-    <div className="absolute h-screen pt-40 w-72">
+    <div className="absolute h-screen pt-20 w-72">
       {folders.map((value, i) => {
         return value === selectedFolder ? (
           <div key={i} className="w-full flex flex-col items-center mb-4">
@@ -66,7 +66,7 @@ const Sidebar = ({
           </div>
         );
       })}
-      <div className="w-full flex justify-center mt-32">
+      <div className="w-full flex justify-center mt-12">
         <div className="w-4/5 bg-[#1d1d1d] rounded-xl px-4 py-2 text-11">
           <input
             type="text"
