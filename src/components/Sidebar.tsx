@@ -1,5 +1,5 @@
 import { db } from "@/lib/FirebaseConfig";
-import { useUserAuth } from "@/service/Firebase/AuthContext";
+import { UseUserAuth } from "@/service/Firebase/AuthContext";
 import { doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 
@@ -12,7 +12,7 @@ const Sidebar = ({
   folders: string[];
   setSelectedFolder: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const user = useUserAuth();
+  const user = UseUserAuth();
   const [newFolder, setNewFolder] = useState("");
   const handleAddFolder = async () => {
     if (newFolder !== "") {

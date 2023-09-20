@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import TaskStatus from "@/components/TaskStatus";
 import Tasks from "@/components/Tasks";
 import React, { useEffect, useState } from "react";
-import { useUserAuth } from "@/service/Firebase/AuthContext";
+import { UseUserAuth } from "@/service/Firebase/AuthContext";
 import {
   DocumentData,
   collection,
@@ -19,7 +19,7 @@ import { redirect } from "next/navigation";
 const TaskPage = () => {
   const handleRedirect = () => {
     try {
-      return useUserAuth();
+      return UseUserAuth();
     } catch (e) {
       console.log(e);
       redirect("/");

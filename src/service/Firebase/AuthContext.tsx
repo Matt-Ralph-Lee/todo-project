@@ -17,7 +17,6 @@ import {
   useState,
 } from "react";
 import { db, getFirebaseApp } from "@/lib/FirebaseConfig";
-import { FirestoreService } from "./Firestore";
 import { User } from "@/domain/classes/user";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { Username } from "@/domain/classes/username";
@@ -94,7 +93,7 @@ export const UserAuth = () => {
   return useContext(AuthContext);
 };
 
-export const useUserAuth = () => {
+export const UseUserAuth = () => {
   const { currentUser } = useContext(AuthContext);
   if (currentUser !== null) {
     return currentUser;
